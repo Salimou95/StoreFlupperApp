@@ -6,7 +6,7 @@ import 'package:store/models/category.dart';
 import 'package:store/models/product.dart';
 import 'package:store/providers/category_provider.dart';
 import 'package:store/services/category_api_service.dart';
-
+import 'package:go_router/go_router.dart';
 import 'product_detail_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
@@ -46,12 +46,10 @@ class CategoryScreen extends StatelessWidget {
                       title: Text(data[index].title!),
                       subtitle: Text('${data[index].price!}€'),
                       trailing: Icon(Icons.arrow_forward_ios, size: 10),
+                      //* V1, Test pour Envoi vers nouvelle page sans route : Lucas
+                      //! Vfinal avec utilisation du routeur : Salimou
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ProductDetailScreen(product: data[index]),
-                          ),
-                        );
+                        context.pushNamed('product-detail', extra: data[index]);
                       },
                     );
                   },
