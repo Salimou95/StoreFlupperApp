@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:store/providers/product_provider.dart';
 import 'package:store/models/product.dart';
 
@@ -56,11 +57,40 @@ class ProductDetailScreen extends StatelessWidget {
                   Row(
                     children: [
                       // ? Ajout de l'icône de favoris : Keziah
-                      IconButton(
-                        onPressed: () {
-                          print('favori');
+                      FutureBuilder<SharedPreferences>(
+                        future: SharedPreferences.getInstance(),
+                        builder: (context, prefsSnapshot) {
+                          if (!prefsSnapshot.hasData) {
+                            return const Icon(Icons.favorite_border, color: Colors.grey);
+                          }
+                          final prefs = prefsSnapshot.data!;
+                          final favoris = prefs.getStringList('favoris') ?? [];
+                          final productIdStr = product.id.toString();
+                          final isFavori = favoris.contains(productIdStr);
+
+                          if (isFavori) {
+                            // Déjà en favori : icône rouge, non cliquable
+                            return const Icon(Icons.favorite, color: Colors.red);
+                          } else {
+                            // Pas encore en favori : icône grise, cliquable une seule fois
+                            return IconButton(
+                              onPressed: () async {
+                                final favoris = prefs.getStringList('favoris') ?? [];
+                                favoris.add(productIdStr);
+                                await prefs.setStringList('favoris', favoris);
+                                await prefs.setString('favori_title_$productIdStr', product.title ?? '');
+                                await prefs.setString('favori_image_$productIdStr', product.images?.isNotEmpty == true ? product.images!.first : '');
+                                await prefs.setString('favori_price_$productIdStr', product.price?.toString() ?? '');
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(content: Text('Produit ajouté aux favoris')),
+                                );
+                                // Force rebuild pour mettre à jour l'icône
+                                (context as Element).markNeedsBuild();
+                              },
+                              icon: const Icon(Icons.favorite_border, color: Colors.grey),
+                            );
+                          }
                         },
-                        icon: const Icon(Icons.favorite),
                       ),
                       IconButton(
                         onPressed: () {
