@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart'; // Ajoute cet import
@@ -8,8 +6,6 @@ import 'package:store/models/product.dart';
 import 'package:store/providers/category_provider.dart';
 import 'package:store/providers/product_provider.dart';
 import 'package:store/services/category_api_service.dart';
-
-import 'product_detail_screen.dart';
 
 class CategoryScreen extends StatelessWidget {
   const CategoryScreen({super.key});

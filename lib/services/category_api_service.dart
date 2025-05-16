@@ -1,6 +1,5 @@
 // ! Page crée par salimou
 import 'dart:convert';
-import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:store/models/category.dart';

@@ -74,6 +74,7 @@ class ProductDetailScreen extends StatelessWidget {
                           } else {
                             // Pas encore en favori : icône grise, cliquable une seule fois
                             return IconButton(
+                              // ? Ajout de la fonction d'ajout aux favoris : Keziah
                               onPressed: () async {
                                 final favoris = prefs.getStringList('favoris') ?? [];
                                 favoris.add(productIdStr);
@@ -92,6 +93,7 @@ class ProductDetailScreen extends StatelessWidget {
                           }
                         },
                       ),
+                      // ? Ajout de l'icône de panier : Keziah
                       IconButton(
                         onPressed: () {
                           Provider.of<CartProvider>(context, listen: false).addToCart(product);
