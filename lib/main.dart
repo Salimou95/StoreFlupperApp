@@ -2,14 +2,16 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/providers/category_provider.dart';
+import 'package:store/providers/product_provider.dart';
 import 'package:store/services/router_service.dart';
 import 'package:store/theme/app_theme.dart';
 
 void main() => runApp(
-  // ajout des providers
   MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => CategoryProvider()),
+
+      ChangeNotifierProvider(create: (context) => ProductProvider()), // Ajout ici
     ],
     child: MyStore(),
   ),
