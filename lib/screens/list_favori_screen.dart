@@ -1,3 +1,5 @@
+// ? Creation de la page de liste des favoris : Keziah
+
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -16,7 +18,7 @@ class _ListFavoriScreenState extends State<ListFavoriScreen> {
     super.initState();
     _loadFavoris();
   }
-
+ // ? Affichage de la liste des favoris : Keziah
   Future<void> _loadFavoris() async {
     final prefs = await SharedPreferences.getInstance();
     final ids = prefs.getStringList('favoris') ?? [];

@@ -1,6 +1,5 @@
 import 'package:go_router/go_router.dart';
 import 'package:store/layouts/root_layout.dart';
-import 'package:store/models/product.dart';
 import 'package:store/screens/cart_screen.dart';
 import 'package:store/screens/category_screen.dart';
 import 'package:store/screens/home_screen.dart';
