@@ -41,6 +41,7 @@ class RouterService {
           name: 'product-detail',
           builder: (context, state) => RootLayout(screen: ProductDetailScreen()),
         ),
+        // !Route créée pour afficher le panier : Salimou
         GoRoute(
           path: '/cart',
           name: 'cart',
