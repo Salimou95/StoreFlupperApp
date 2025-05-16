@@ -29,7 +29,7 @@ class ProductDetailScreen extends StatelessWidget {
             ),
             IconButton(
               onPressed: () {
-                print('favori');
+                print('panier');
               },
               icon: Icon(Icons.shopping_cart),
             ),
