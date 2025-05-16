@@ -5,6 +5,7 @@ import 'package:store/screens/category_screen.dart';
 import 'package:store/screens/home_screen.dart';
 import 'package:store/screens/login_screen.dart';
 import 'package:store/screens/product_detail_screen.dart';
+import 'package:store/screens/list_favori_screen.dart';
 
 class RouterService {
   // liste des routes de l'application
@@ -26,6 +27,12 @@ class RouterService {
           name: 'login',
           builder: (context, state) => RootLayout(screen: LoginScreen()),
         ),
+        // ? Route créée pour afficher la liste des favoris : Keziah
+        GoRoute(
+       path: '/favoris',
+       name: 'favoris',
+       builder: (context, state) => RootLayout(screen: ListFavoriScreen()),
+     ),
         // !Route créée pour afficher le détail d'un produit : Salimou
         // ? Rajout de layout pour la page de détail : Keziah
         GoRoute(
