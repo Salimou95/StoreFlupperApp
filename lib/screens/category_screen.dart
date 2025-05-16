@@ -46,6 +46,7 @@ class CategoryScreen extends StatelessWidget {
                       title: Text(data[index].title!),
                       subtitle: Text('${data[index].price!}€'),
                       trailing: Icon(Icons.arrow_forward_ios, size: 10),
+                      // ! Chemin de navigation vers la page de détail : Salimou (1er version)
                       onTap: () {
                         Navigator.of(context).push(
                           MaterialPageRoute(
