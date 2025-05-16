@@ -26,13 +26,14 @@ class RouterService {
           name: 'login',
           builder: (context, state) => RootLayout(screen: LoginScreen()),
         ),
-        // !Route créée pour afficher le détail d'un produit 
+        // !Route créée pour afficher le détail d'un produit : Salimou
+        // ? Rajout de layout pour la page de détail : Keziah
         GoRoute(
           path: '/product-detail',
           name: 'product-detail',
           builder: (context, state) {
             final product = state.extra as Product;
-            return ProductDetailScreen(product: product);
+            return RootLayout(screen: ProductDetailScreen(product: product));
           },
         ),
       ],

@@ -19,6 +19,22 @@ class ProductDetailScreen extends StatelessWidget {
             if (product.images != null && product.images!.isNotEmpty)
               Image.network(product.images!.first, height: 200),
             const SizedBox(height: 16),
+
+            // ? Ajout de l'icône de favoris : Keziah
+            IconButton(
+              onPressed: () {
+                print('favori');
+              },
+              icon: Icon(Icons.favorite),
+            ),
+            IconButton(
+              onPressed: () {
+                print('favori');
+              },
+              icon: Icon(Icons.shopping_cart),
+            ),
+            // ? /////////////////
+
             Text(product.title ?? '', style: Theme.of(context).textTheme.headlineSmall),
             const SizedBox(height: 8),
             Text('${product.price ?? ''} €', style: const TextStyle(fontSize: 20, color: Colors.green)),
