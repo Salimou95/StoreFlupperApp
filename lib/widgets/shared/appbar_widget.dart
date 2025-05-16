@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:store/screens/cart_screen.dart';
 
 class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
   const AppbarWidget({super.key});
@@ -32,10 +33,10 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       title: Text('My Store'),
       actions: [
         IconButton(
-          onPressed: () {
-            print('cart');
-          },
           icon: Icon(Icons.shopping_cart),
+          onPressed: () {
+            context.pushNamed('cart');
+          },
         ),
         IconButton(onPressed: () {}, icon: Icon(Icons.favorite)),
         // IconButton(onPressed: () {}, icon: Icon(Icons.search)),

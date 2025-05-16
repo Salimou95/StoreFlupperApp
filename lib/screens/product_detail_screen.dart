@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/models/product.dart';
+import 'package:store/providers/cart_provider.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
@@ -27,9 +28,13 @@ class ProductDetailScreen extends StatelessWidget {
               },
               icon: Icon(Icons.favorite),
             ),
+            // ! creation de l'action du panier : salimou
             IconButton(
               onPressed: () {
-                print('favori');
+                Provider.of<CartProvider>(context, listen: false).addToCart(product);
+                ScaffoldMessenger.of(context).showSnackBar(
+                  const SnackBar(content: Text('Produit ajouté au panier')),
+                );
               },
               icon: Icon(Icons.shopping_cart),
             ),

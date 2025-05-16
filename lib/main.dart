@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/providers/category_provider.dart';
+import 'package:store/providers/cart_provider.dart';
 import 'package:store/services/router_service.dart';
 import 'package:store/theme/app_theme.dart';
 
@@ -10,6 +11,8 @@ void main() => runApp(
   MultiProvider(
     providers: [
       ChangeNotifierProvider(create: (context) => CategoryProvider()),
+      // !Provider pour le panier : Salimou
+      ChangeNotifierProvider(create: (context) => CartProvider()),
     ],
     child: MyStore(),
   ),
