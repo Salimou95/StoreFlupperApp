@@ -2,9 +2,11 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart'; // Ajoute cet import
 import 'package:store/models/category.dart';
 import 'package:store/models/product.dart';
 import 'package:store/providers/category_provider.dart';
+import 'package:store/providers/product_provider.dart';
 import 'package:store/services/category_api_service.dart';
 
 import 'product_detail_screen.dart';
@@ -48,11 +50,10 @@ class CategoryScreen extends StatelessWidget {
                       trailing: Icon(Icons.arrow_forward_ios, size: 10),
                       // ! Chemin de navigation vers la page de détail : Salimou (1er version)
                       onTap: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(
-                            builder: (_) => ProductDetailScreen(product: data[index]),
-                          ),
-                        );
+                        // Définir l'ID du produit dans le provider avant la navigation
+                        context.read<ProductProvider>().setProductId(data[index].id!);
+                        // Naviguer vers la page détail
+                        context.pushNamed('product-detail');
                       },
                     );
                   },

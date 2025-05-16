@@ -38,10 +38,7 @@ class RouterService {
         GoRoute(
           path: '/product-detail',
           name: 'product-detail',
-          builder: (context, state) {
-            final product = state.extra as Product;
-            return RootLayout(screen: ProductDetailScreen(product: product));
-          },
+          builder: (context, state) => RootLayout(screen: ProductDetailScreen()),
         ),
       ],
     );
