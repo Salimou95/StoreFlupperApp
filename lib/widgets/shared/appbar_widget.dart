@@ -33,7 +33,7 @@ class AppbarWidget extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         IconButton(
           onPressed: () {
-            print('cart');
+            context.pushNamed('cart');
           },
           icon: Icon(Icons.shopping_cart),
         ),

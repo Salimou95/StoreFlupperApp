@@ -2,8 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:store/providers/product_provider.dart';
 import 'package:store/models/product.dart';
+
+import 'package:store/providers/cart_provider.dart';
+
+
 import 'package:store/services/product_api_service.dart';
- 
+
 class ProductDetailScreen extends StatelessWidget {
   const ProductDetailScreen({super.key});
  
@@ -60,7 +64,10 @@ class ProductDetailScreen extends StatelessWidget {
                       ),
                       IconButton(
                         onPressed: () {
-                          print('panier');
+                          Provider.of<CartProvider>(context, listen: false).addToCart(product);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(content: Text('Produit ajouté au panier')),
+                          );
                         },
                         icon: const Icon(Icons.shopping_cart),
                       ),
